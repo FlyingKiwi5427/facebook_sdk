@@ -16,6 +16,8 @@ class FacebookSdk {
     final Map<dynamic, dynamic> result = await _channel.invokeMethod('login', { 'permissions': permissions });
     return FacebookLoginResult._(result.cast<String, dynamic>());
   }
+
+  static Future<void> logOut() async => _channel.invokeMethod('logout');
 }
 
 class FacebookLoginResult {

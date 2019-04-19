@@ -21,6 +21,7 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 /** FacebookSdkPlugin */
 public class FacebookSdkPlugin implements MethodCallHandler {
   private static final String LOGIN = "login";
+  private static final String LOGOUT = "logout";
   private static final String SHARE_LINK = "shareLinkContent";
 
   private final FacebookDelegate delegate;
@@ -41,6 +42,9 @@ public class FacebookSdkPlugin implements MethodCallHandler {
       case LOGIN:
         List<String> readPermissions = call.argument("permissions");
         delegate.logInWithReadPermissions(readPermissions, result);
+        break;
+      case LOGOUT:
+        delegate.logOut(result);
         break;
       case SHARE_LINK:
         String link = call.argument("link");
@@ -88,6 +92,11 @@ public class FacebookSdkPlugin implements MethodCallHandler {
 
       loginManager.setLoginBehavior(LoginBehavior.NATIVE_WITH_FALLBACK);
       loginManager.logInWithReadPermissions(registrar.activity(), permissions);
+    }
+
+    public void logOut(Result result) {
+      loginManager.logOut();
+      result.success(null);
     }
   }
 }
