@@ -15,6 +15,12 @@ A new flutter plugin project.
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
+  s.dependency 'FBSDKCoreKit', '4.41.2'
+  s.dependency 'FBSDKLoginKit', '4.39.1'
+  s.dependency 'FBSDKShareKit', '4.41.2'
+
+  # https://github.com/flutter/flutter/issues/14161
+  s.static_framework = true
 
   s.ios.deployment_target = '8.0'
 end

@@ -19,3 +19,29 @@ Add the following to android/app/src/main/res/values/strings.xml
     <string name="facebook_app_id">{FB_APP_ID}</string>
     <string name="fb_login_protocol_scheme">fb{FB_APP_ID}</string>
 ```
+
+### iOS
+Add the following to your Info.plist
+```
+	<key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb{FB_APP_ID}</string>
+            </array>
+        </dict>
+    </array>
+	<key>FacebookAppID</key>
+	<string>{FB_APP_ID}</string>
+	<key>FacebookDisplayName</key>
+	<string>Facebook SDK Example</string>
+
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
+```
