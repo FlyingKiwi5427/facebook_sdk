@@ -46,6 +46,16 @@ class _MyAppState extends State<MyApp> {
     print(result);
   }
 
+  void fbLogin() async {
+    FacebookLoginResult result = await FacebookSdk.logInWithReadPermissions(['email', 'user_gender']);
+    print(result.accessToken);
+    // final facebookLogin = FacebookLogin();
+    // facebookLogin.loginBehavior = FacebookLoginBehavior.nativeOnly;
+    // await facebookLogin.logOut();
+    // final FacebookLoginResult result = await facebookLogin.logInWithReadPermissions(['email', 'user_gender']);
+    // print("Loginresult: " + result.accessToken.toString());
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -53,14 +63,21 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Center(
-          child: FlatButton(
-            child: Text("Share"),
-            onPressed: () {
-              shareLink();
-            },
-          )
-          //Text('Running on: $_platformVersion\n'),
+        body: Column(
+          children: <Widget>[
+            FlatButton(
+              child: Text("Login"),
+              onPressed: () {
+                fbLogin();
+              },
+            ),
+            FlatButton(
+              child: Text("Share"),
+              onPressed: () {
+                shareLink();
+              },
+            ),
+          ],
         ),
       ),
     );
