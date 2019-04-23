@@ -1,6 +1,6 @@
 name: facebook_sdk
 description: A flutter plugin for integrating the Facebook SDK. For now only link-content-sharing is implemented using the Facebook Sharing (https://developers.facebook.com/docs/sharing/)
-version: 0.0.2
+version: 0.0.3
 author: Marijn van der Krieken <marijn@flyingkiwi.nl>
 homepage: https://www.flyingkiwi.nl/
 
