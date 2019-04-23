@@ -8,6 +8,7 @@
 
 @implementation FacebookSdkPlugin {
     FBSDKLoginManager *loginManager;
+    FlutterResult flutterResult;
 }
 
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
@@ -75,12 +76,14 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
 - (void)shareLinkContent:(NSString*)link
                   result:(FlutterResult)result {
+    flutterResult = result;
     FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
     content.contentURL = [NSURL URLWithString:link];
-    
     [FBSDKShareDialog showFromViewController:nil
                                  withContent:content
-                                    delegate:nil];
+                                    delegate:self
+     ];
+    //result(@"share result");
 }
 
 - (void)loginWithReadPermissions:(FBSDKLoginBehavior)behavior
@@ -145,6 +148,21 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
              @"permissions" : permissions,
              @"declinedPermissions" : declinedPermissions,
              };
+}
+
+- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results {
+    NSLog(@"didCompleteWithResults");
+    flutterResult(nil);
+}
+
+- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error {
+    NSLog(@"didFailWithError");
+    flutterResult(nil);
+}
+
+- (void)sharerDidCancel:(id<FBSDKSharing>)sharer {
+    NSLog(@"sharerDidCancel");
+    flutterResult(nil);
 }
 
 @end

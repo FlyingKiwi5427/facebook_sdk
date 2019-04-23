@@ -19,6 +19,7 @@ class _MyAppState extends State<MyApp> {
 
   void shareLink() async {
     String result = await FacebookSdk.shareLinkContent("https://www.flyingkiwi.nl");
+    print(result);
   }
 
   void fbLogin() async {
