@@ -22,8 +22,10 @@ class _MyAppState extends State<MyApp> {
   }
 
   void fbLogin() async {
-    await FacebookSdk.logOut();
+    // await FacebookSdk.logOut();
     FacebookLoginResult result = await FacebookSdk.logInWithReadPermissions(['email', 'user_gender']);
+    print(result.accessToken.token);
+    print(result.errorMessage);
   }
 
   @override
