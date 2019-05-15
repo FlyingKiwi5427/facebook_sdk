@@ -15,9 +15,9 @@ A new flutter plugin project.
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
-  s.dependency 'FBSDKCoreKit'
-  s.dependency 'FBSDKLoginKit'
-  s.dependency 'FBSDKShareKit'
+  s.dependency 'FBSDKCoreKit', '4.39.1'
+  s.dependency 'FBSDKLoginKit', '4.39.1'
+  # s.dependency 'FBSDKShareKit'
 
   # https://github.com/flutter/flutter/issues/14161
   s.static_framework = true

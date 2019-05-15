@@ -1,3 +1,7 @@
+## 0.0.6
+
+* Revert to 4.39.1 FB SDK. 
+
 ## 0.0.5
 
 * Changed Facebook Login Behaviour from Native (deprecated) to Browser

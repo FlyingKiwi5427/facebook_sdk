@@ -6,15 +6,12 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
   - facebook_sdk (0.0.1):
-    - FBSDKCoreKit
-    - FBSDKLoginKit
-    - FBSDKShareKit
+    - FBSDKCoreKit (= 4.39.1)
+    - FBSDKLoginKit (= 4.39.1)
     - Flutter
-  - FBSDKCoreKit (4.44.1):
+  - FBSDKCoreKit (4.39.1):
     - Bolts (~> 1.9)
-  - FBSDKLoginKit (4.44.1):
-    - FBSDKCoreKit
-  - FBSDKShareKit (4.44.1):
+  - FBSDKLoginKit (4.39.1):
     - FBSDKCoreKit
   - Flutter (1.0.0)
 
@@ -27,7 +24,6 @@ SPEC REPOS:
     - Bolts
     - FBSDKCoreKit
     - FBSDKLoginKit
-    - FBSDKShareKit
 
 EXTERNAL SOURCES:
   facebook_sdk:
@@ -37,10 +33,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
-  facebook_sdk: 59d9c7a725b0058ac77080434e186de65d186c3a
-  FBSDKCoreKit: a823ae35bdb60ebb8d7a7e51abe7c5d87d2bfced
-  FBSDKLoginKit: 54ae59987f2a8703021557c90a9aebb9e5c2bef6
-  FBSDKShareKit: 526d4cfb713d24855fa23d0dd74e191accd3a720
+  facebook_sdk: 79293fbad02c70e5b10d06ac74ed78ae51f1ddea
+  FBSDKCoreKit: f442aa96179cc9b382bb4abeb7e340a47cca8f91
+  FBSDKLoginKit: c3079d9a4db27c492287b1eed7a4272b28cf8a59
   Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
 
 PODFILE CHECKSUM: aff02bfeed411c636180d6812254b2daeea14d09

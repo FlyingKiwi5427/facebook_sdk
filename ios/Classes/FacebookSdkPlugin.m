@@ -1,9 +1,9 @@
 #import "FacebookSdkPlugin.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
-#import <FBSDKShareKit/FBSDKSharingContent.h>
-#import <FBSDKShareKit/FBSDKShareLinkContent.h>
-#import <FBSDKShareKit/FBSDKShareDialog.h>
+//#import <FBSDKShareKit/FBSDKSharingContent.h>
+//#import <FBSDKShareKit/FBSDKShareLinkContent.h>
+//#import <FBSDKShareKit/FBSDKShareDialog.h>
 
 
 @implementation FacebookSdkPlugin {
@@ -59,52 +59,41 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     if ([@"login" isEqualToString:call.method]) {
         FBSDKLoginBehavior behavior = FBSDKLoginBehaviorBrowser;
         NSArray *permissions = call.arguments[@"permissions"];
+        [loginManager setLoginBehavior:behavior];
         
-        [self loginWithReadPermissions:behavior
-                           permissions:permissions
-                                result:result];
+        [loginManager logInWithReadPermissions:permissions fromViewController:nil handler:^(FBSDKLoginManagerLoginResult *loginResult,
+                                                                                        NSError *error) {
+            [self handleLoginResult:loginResult
+                             result:result
+                              error:error];
+        }];
   } else if ([@"logout" isEqualToString:call.method]) {
         [self logOut:result];
-  } else if ([@"shareLinkContent" isEqualToString:call.method]) {
-      NSString *link = call.arguments[@"link"];
-      [self shareLinkContent:link
-                      result:result];
+//  } else if ([@"shareLinkContent" isEqualToString:call.method]) {
+//      NSString *link = call.arguments[@"link"];
+//      [self shareLinkContent:link
+//                      result:result];
   } else {
     result(FlutterMethodNotImplemented);
   }
-}
-
-- (void)shareLinkContent:(NSString*)link
-                  result:(FlutterResult)result {
-    flutterResult = result;
-    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
-    content.contentURL = [NSURL URLWithString:link];
-    [FBSDKShareDialog showFromViewController:nil
-                                 withContent:content
-                                    delegate:self
-     ];
-    //result(@"share result");
-}
-
-- (void)loginWithReadPermissions:(FBSDKLoginBehavior)behavior
-   permissions:(NSArray *)permissions
-        result:(FlutterResult)result {
-    [loginManager setLoginBehavior:behavior];
-    [loginManager
-     logInWithReadPermissions:permissions
-     fromViewController:nil
-     handler:^(FBSDKLoginManagerLoginResult *loginResult,
-               NSError *error) {
-         [self handleLoginResult:loginResult
-                          result:result
-                           error:error];
-     }];
 }
 
 - (void)logOut:(FlutterResult)result {
     [loginManager logOut];
     result(nil);
 }
+
+//- (void)shareLinkContent:(NSString*)link
+//                  result:(FlutterResult)result {
+//    flutterResult = result;
+//    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+//    content.contentURL = [NSURL URLWithString:link];
+////    [FBSDKShareDialog showFromViewController:nil
+////                                 withContent:content
+////                                    delegate:self
+////     ];
+//    //result(@"share result");
+//}
 
 - (void)handleLoginResult:(FBSDKLoginManagerLoginResult *)loginResult
                    result:(FlutterResult)result
@@ -150,19 +139,19 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
              };
 }
 
-- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results {
-    NSLog(@"didCompleteWithResults");
-    flutterResult(nil);
-}
-
-- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error {
-    NSLog(@"didFailWithError");
-    flutterResult(nil);
-}
-
-- (void)sharerDidCancel:(id<FBSDKSharing>)sharer {
-    NSLog(@"sharerDidCancel");
-    flutterResult(nil);
-}
+//- (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results {
+//    NSLog(@"didCompleteWithResults");
+//    flutterResult(nil);
+//}
+//
+//- (void)sharer:(id<FBSDKSharing>)sharer didFailWithError:(NSError *)error {
+//    NSLog(@"didFailWithError");
+//    flutterResult(nil);
+//}
+//
+//- (void)sharerDidCancel:(id<FBSDKSharing>)sharer {
+//    NSLog(@"sharerDidCancel");
+//    flutterResult(nil);
+//}
 
 @end
