@@ -57,7 +57,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
     if ([@"login" isEqualToString:call.method]) {
-        FBSDKLoginBehavior behavior = FBSDKLoginBehaviorNative;
+        FBSDKLoginBehavior behavior = FBSDKLoginBehaviorBrowser;
         NSArray *permissions = call.arguments[@"permissions"];
         
         [self loginWithReadPermissions:behavior
