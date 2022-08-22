@@ -21,6 +21,6 @@ A new flutter plugin project.
   # https://github.com/flutter/flutter/issues/14161
   s.static_framework = true
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 end
 
